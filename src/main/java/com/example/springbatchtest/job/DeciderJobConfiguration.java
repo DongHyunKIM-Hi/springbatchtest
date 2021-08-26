@@ -70,7 +70,7 @@ public class DeciderJobConfiguration {
     }
 
     @Bean
-    public JobExecutionDecider decider() {
+    public JobExecutionDecider decider() { // 커스텀한 JobEXecutionDecider 생성
         return new OddDecider();
     }
 
