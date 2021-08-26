@@ -18,7 +18,7 @@ public class StepNextJobConfiguration {
     private final StepBuilderFactory stepBuilderFactory;
 
 
-    
+
     @Bean
     public Job stepNextJob(){
         return jobBuilderFactory.get("stepNextJob")
@@ -27,6 +27,7 @@ public class StepNextJobConfiguration {
                 .next(step3())
                 .build();
     }
+
 
 
 
