@@ -33,6 +33,7 @@ public class SimpleJobConfiguration {
         return stepBuilderFactory.get("simpleStep1") //"simpleStep1이라는 Step을 생성합니다."
                 .tasklet((contribution, chunkContext) -> { //각각의 Step 안에서 수행될 기능들을 명시합니다.
                     log.info("스텝 1단계 시작");  //tasklet에서 수행될 기능들을 명시하고
+                    
                     log.info(">>>>>>>>>>>>> requestDate = {}" , requestDate);
                     return RepeatStatus.FINISHED; // reader,processor,write에서 실질적인 작업을 수행한다.
                 })
