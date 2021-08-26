@@ -28,6 +28,7 @@ public class StepNextJobConfiguration {
     }
 
     
+
     @Bean
     public Step step1(){
         return stepBuilderFactory.get("step1")
