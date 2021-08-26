@@ -24,18 +24,31 @@ public class SimpleJobConfiguration {
     public Job simpleJob(){
         return jobBuilderFactory.get("simpleJob") //"simpleJob이라는 job을 생성합니다."
                 .start(simpleStep1(null)) // "simpleJob은 simpleStep1을 step으로 가지고 있습니다"
+                .next(simpleStep2(null)) // 다음 단계로 "simpleStep2"를 실행합니다.
                 .build();
     }
 
     @Bean
     @JobScope
-    public Step simpleStep1(@Value("#{jobParameters[requestDate]}") String requestDate){
-        return stepBuilderFactory.get("simpleStep1") //"simpleStep1이라는 Step을 생성합니다."
-                .tasklet((contribution, chunkContext) -> { //각각의 Step 안에서 수행될 기능들을 명시합니다.
-                    log.info("스텝 1단계 시작");  //tasklet에서 수행될 기능들을 명시하고
-                    
-                    log.info(">>>>>>>>>>>>> requestDate = {}" , requestDate);
-                    return RepeatStatus.FINISHED; // reader,processor,write에서 실질적인 작업을 수행한다.
+    public Step simpleStep1(@Value("#{jobParameters[requestDate]}") String requestDate) {
+        return stepBuilderFactory.get("simpleStep1")
+                .tasklet((contribution, chunkContext) -> {
+                    log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>> this is step1");
+                    log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>> request = {}", requestDate);
+                    return RepeatStatus.FINISHED;
+
+                })
+                .build();
+    }
+
+    @Bean
+    @JobScope
+    public Step simpleStep2(@Value("#{jobParameters[requestDate]}") String requestDate) {
+        return stepBuilderFactory.get("simpleStep2")
+                .tasklet((contribution, chunkContext) -> {
+                    log.info(">>>>> This is Step2");
+                    log.info(">>>>> requestDate = {}", requestDate);
+                    return RepeatStatus.FINISHED;
                 })
                 .build();
     }
