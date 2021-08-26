@@ -16,10 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class StepNextJobConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
-
-
     
-
     @Bean
     public Job stepNextJob(){
         return jobBuilderFactory.get("stepNextJob")
