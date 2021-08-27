@@ -1,3 +1,4 @@
+/*
 package com.example.springbatchtest.job;
 
 import lombok.RequiredArgsConstructor;
@@ -42,10 +43,12 @@ public class StepNextConditionalJobConfiguration {
                 .tasklet((contribution, chunkContext) -> {
                     log.info(">>>>> This is stepNextConditionalJob Step1");
 
-                    /**
+                    */
+/**
                      ExitStatus를 FAILED로 지정한다.
                      해당 status를 보고 flow가 진행된다.
-                     **/
+                     **//*
+
                     //contribution.setExitStatus(ExitStatus.FAILED);
 
                     return RepeatStatus.FINISHED;
@@ -75,3 +78,4 @@ public class StepNextConditionalJobConfiguration {
 
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.springbatchtest.job;
 
 import lombok.RequiredArgsConstructor;
@@ -91,3 +92,4 @@ public class DeciderJobConfiguration {
         }
     }
 }
+*/
